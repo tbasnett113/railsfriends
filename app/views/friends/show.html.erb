@@ -1,0 +1,18 @@
+<div class="card">
+	<div class="card-header">
+		<h1 class="card-title"><%= @friend.first_name %>
+		    <%= @friend.last_name %></h1>
+	</div>
+	<div class="card-body">
+		  <p class="lead"><strong>Email: </strong><%= @friend.email %><br/>
+		    <strong>Phone: </strong><%= @friend.phone %><br/>
+		    <strong>Twitter: </strong><%= @friend.twitter %>
+		  </p>
+	</div>
+	<div class="card-footer">
+		<%= link_to 'Edit', edit_friend_path(@friend), class:"btn btn-secondary" %>
+		<%= link_to 'Back', friends_path, class:"btn btn-dark" %>
+	</div>
+</div>
+
+
