@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_friend, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /friends or /friends.json
@@ -58,9 +58,11 @@ class FriendsController < ApplicationController
     end
   end
 
+
+  #Verifies the correct user is logged in before allowing access to data
   def correct_user
     @friend = current_user.friends.find_by(id: params[:id])
-    redirect_to friends_path, notice: "NOT AUTHORIZED to edit fhis friend" if @friend.nil?
+    redirect_to friends_path, notice: "NOT AUTHORIZED to edit this friend" if @friend.nil?
   end
 
 
